@@ -1,11 +1,9 @@
-// API is available at import.meta.env.VITE_API_URL
+import AppRoutes from "./AppRoutes";
 
 function App() {
   return (
     <main>
-      <h1>URL shortener</h1>
-      <input />
-      <button>Shorten</button>
+      <AppRoutes />
     </main>
   );
 }

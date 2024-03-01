@@ -1,10 +1,33 @@
 import Koa from "koa";
+import cors from "@koa/cors";
+import dotenv from "dotenv";
+import path from "path";
+import { zodRouter } from "koa-zod-router";
+
+import { dataSource } from "./configuration/index";
+import { getSlugRoute, shortenUrlRoute } from "./url/url.routes";
+
+dotenv.config({
+  path: path.join(__dirname, "../.env"),
+});
+
+dataSource
+  .initialize()
+  .then(() => {
+    console.log("Database connected");
+  })
+  .catch((error) => {
+    console.error("Error connecting to the database:", error);
+  });
 
 const app = new Koa();
+app.use(cors());
+const router = zodRouter();
 
-app.use((ctx) => {
-  ctx.body = "Hello Koa";
-});
+router.register(shortenUrlRoute);
+router.register(getSlugRoute);
+
+app.use(router.routes()).use(router.allowedMethods());
 
 app.listen(process.env.PORT, () => {
   console.log(`Server ready http://localhost:${process.env.PORT}`);

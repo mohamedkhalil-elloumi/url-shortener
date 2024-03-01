@@ -1,6 +1,13 @@
 {
   "compilerOptions": {
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "strict": true,
+    "target": "ES5",
+    "noImplicitAny": false,
+    "outDir": "./dist"
   },
-  "include": ["src"]
+  "include": ["src"],
+  "exclude": ["node_modules", "/tests"]
 }
