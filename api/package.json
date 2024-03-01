@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "scripts": {
     "dev": "nodemon src/index.ts",
-    "migration:create": "ts-node ../node_modules/typeorm/cli.js migration:create $npm_config_name",
-    "migration:run": "ts-node --project ./tsconfig.json ../node_modules/typeorm/cli.js migration:run -d ./src/configuration/index.ts",
-    "migration:revert": "ts-node --project ./tsconfig.json ../node_modules/typeorm/cli.js migration:revert -d ./src/configuration/index.ts"
+    "migration:create": "ts-node ./node_modules/typeorm/cli.js migration:create $npm_config_name",
+    "migration:run": "ts-node --project ./tsconfig.json ./node_modules/typeorm/cli.js migration:run -d ./src/configuration/index.ts",
+    "migration:revert": "ts-node --project ./tsconfig.json ./node_modules/typeorm/cli.js migration:revert -d ./src/configuration/index.ts"
   },
   "devDependencies": {
     "@types/koa": "^2.13.5",
@@ -18,6 +18,7 @@
     "@koa/cors": "^5.0.0",
     "koa": "^2.13.4",
     "koa-zod-router": "^2.2.0",
+    "nanoid": "^3.3.7",
     "nodemon": "^2.0.20",
     "pg": "^8.11.3",
     "reflect-metadata": "^0.2.1",

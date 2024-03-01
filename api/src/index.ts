@@ -22,6 +22,14 @@ dataSource
 
 const app = new Koa();
 app.use(cors());
+
+app.use(async (ctx, next) => {
+  if (ctx.request.path === "/") {
+    ctx.body = "Welcome to the URL shortener API";
+  } else {
+    await next();
+  }
+});
 const router = zodRouter();
 
 router.register(shortenUrlRoute);

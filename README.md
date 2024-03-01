@@ -1,6 +1,21 @@
-# URL Shortener boilerplate
+# URL Shortener Project
 
 ## Getting started
+
+The aim of this project is to shorten urls, which means given a long url, the app will generate a short url that redirects to the original url.
+
+### Technical Stack Used
+
+- Docker
+- Node.js
+- npm
+- TypeScript
+- Koa
+- PostgresDB
+- TypeORM
+- Docker Compose
+
+### Running the project
 
 Install dependencies:
 
@@ -8,21 +23,15 @@ Install dependencies:
 npm i
 ```
 
-Run the app:
+Build the Docker image and run:
 
 ```bash
-npm run dev -w app
+make build
+make dev
 ```
 
-Run the api:
+Execute migrations
 
 ```bash
-npm run dev -w api
-```
-
-The app and api restart on code change.
-
-Format code:
-```bash
-npm run format
+make migration-migrate
 ```

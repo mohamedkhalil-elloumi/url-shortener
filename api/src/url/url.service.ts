@@ -28,13 +28,19 @@ export async function shortenUrlService(originalUrl: string) {
   while (await urlRepository.findOneBy({ slug })) {
     slug = nanoid();
   }
-  await urlRepository.save(
+  const newUrl = await urlRepository.save(
     urlRepository.create({
       originalUrl,
       slug,
       counter: 1,
     })
   );
+  return {
+    originalUrl: newUrl.originalUrl,
+    shortenedUrl: `${baseUrl}/${newUrl.slug}`,
+    counter: newUrl.counter,
+    createdAt: newUrl.createdAt,
+  };
 }
 
 export async function getSlugService(slug: string) {

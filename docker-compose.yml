@@ -16,8 +16,10 @@ services:
       context: ./app
       dockerfile: Dockerfile
     container_name: app
+    env_file:
+      - app/.env
     ports:
-      - "8080:8080"
+      - "3001:3001"
     depends_on:
       - api
   db:
@@ -31,4 +33,4 @@ services:
       - "5432:5432"
 volumes:
   data:
-   name: api_data
+    name: api_data
